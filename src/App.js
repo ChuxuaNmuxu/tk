@@ -57,6 +57,7 @@ class App extends Component {
             gradeId,
             subjectId,
             pass,
+            reason,
             total: questions.total ? questions.total : 0
         })
     }
@@ -87,7 +88,7 @@ class App extends Component {
     }
 
     handleSelectPass = async (pass) => {
-      pass === '3' ? await this.getQuestions({pass: '0', reason: '0'}) : await this.getQuestions({pass});
+      pass === '3' ? await this.getQuestions({pass: '0', reason: '0'}) : await this.getQuestions({pass, reason: null});
     }
     
     handlePassQuestion = async (id, pass) => {
