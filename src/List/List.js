@@ -4,6 +4,10 @@ import { Table, Switch, Checkbox } from 'antd';
 const CheckboxGroup = Checkbox.Group;
 
 class QuestionList extends Component {
+    state = {
+        selectId: null
+    }
+
     columns = [{
         title: 'id',
         dataIndex: 'id',
@@ -25,7 +29,11 @@ class QuestionList extends Component {
                     '答案不正确',
                     '解析、题型、学科、知识点未正确对应'
                 ];
-                return <CheckboxGroup options={reason} value={record.reason.split(',')} onChange={(list) => this.handleReason(record.id, list)} />
+                return <div style={{
+                    pointerEvents: record.id === this.state.selectId ? 'auto' : 'none'
+                }}>
+                    <CheckboxGroup options={reason} value={record.reason.split(',')} onChange={(list) => this.handleReason(record.id, list)} />
+                </div>
             }
         }
     ];
@@ -37,6 +45,10 @@ class QuestionList extends Component {
 
     handleClick = (record) => {
         const {handleClick} = this.props;
+
+        this.setState({
+            selectId: record.id
+        })
 
         handleClick && handleClick(record.id)
     }
@@ -59,6 +71,7 @@ class QuestionList extends Component {
 
     render() {
         const data = this.props.questions;
+        const {selectId} = this.state;
 
         console.log(73, this.props.questions)
         console.log(94, this.props.total)
@@ -73,6 +86,7 @@ class QuestionList extends Component {
                           onClick: () => this.handleClick(record),       // 点击行
                         };
                       }}
+                    rowClassName={(record) => record.id === selectId ? 'select' : ''}
                     columns={this.columns} 
                     dataSource={data}
                     pagination={{

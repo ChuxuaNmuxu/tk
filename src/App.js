@@ -47,7 +47,7 @@ class App extends Component {
         gradeId && (param.gradeId = gradeId);
         subjectId && (param.subjectId = subjectId);
         pass && (param.pass = pass);
-        page && (param.offset = page);
+        page && (param.offset = page * 10);
         reason && (param.reason = reason);
 
         const questions = await api.get(api.pathResolve(`questions`), param);

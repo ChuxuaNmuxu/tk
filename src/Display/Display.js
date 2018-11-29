@@ -31,7 +31,7 @@ class Display extends Component {
                         map(data, (v, k) => {
                             console.log(37, k)
                             return (
-                                <div className = 'display-item' key={k}>
+                                <div className = {`display-item ${k}`} key={k}>
                                     <div className='dispaly-title'>{this.parse[k]}: </div>
                                     <div className='display-content'>
                                         <div className='.JYE_MATH_SELECTOR'>

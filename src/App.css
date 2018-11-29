@@ -44,6 +44,25 @@
   font-weight: bold;
 }
 
+.option_a, .option_b, .option_c, .option_d, .option_e {
+  display: inline-block;
+  padding-right: 25px;
+}
+
+.option_a .dispaly-title, .option_b .dispaly-title, .option_c .dispaly-title, .option_d .dispaly-title, .option_e .dispaly-title {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.option_a .display-content, .option_b .display-content, .option_c .display-content, .option_d .display-content, .option_e .display-content {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.select {
+  background: #e6f7ff;
+}
+
 .MathJye table{
   border-collapse: collapse;
       margin: 0;
