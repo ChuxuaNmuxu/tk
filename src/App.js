@@ -20,10 +20,10 @@ class App extends Component {
     }
 
     async componentDidMount () {
-        const [gradeRes, subjectRes, questions] =  await Promise.all([
+        const [gradeRes, subjectRes] =  await Promise.all([
           api.get(api.pathResolve('grades')),
           api.get(api.pathResolve('subjects')),
-          api.get(api.pathResolve(`questions`))
+          this.getQuestions({})
         ]);
 
         console.log(28, gradeRes)
@@ -32,8 +32,7 @@ class App extends Component {
             info: {
               grade: gradeRes.data,
               subject: subjectRes.data,
-            },
-            questions: questions.data
+            }
         })
     }
 
@@ -133,6 +132,7 @@ class App extends Component {
                       handlePass={this.handlePassQuestion}
                       handleReason={this.handleReason}
                       total={this.state.total}
+                      onPagination={this.onPagination}
                     />
                     <Display
                       question={this.state.question}

@@ -84,6 +84,8 @@ class QuestionList extends Component {
     onPagination = (page) => {
         const {onPagination} = this.props;
 
+        console.log(11, page)
+
         onPagination && onPagination(page);
     }
 
@@ -91,6 +93,7 @@ class QuestionList extends Component {
         const data = this.props.questions;
 
         console.log(73, this.props.questions)
+        console.log(94, this.props.total)
 
         // const {data=qdata} = this.props;
 
