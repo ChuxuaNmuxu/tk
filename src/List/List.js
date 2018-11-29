@@ -5,7 +5,8 @@ const CheckboxGroup = Checkbox.Group;
 
 class QuestionList extends Component {
     state = {
-        selectId: null
+        selectId: null,
+        page: 1
     }
 
     columns = [{
@@ -64,14 +65,13 @@ class QuestionList extends Component {
     onPagination = (page) => {
         const {onPagination} = this.props;
 
-        console.log(11, page)
-
         onPagination && onPagination(page);
     }
 
     render() {
         const data = this.props.questions;
         const {selectId} = this.state;
+        const {page} = this.props;
 
         console.log(73, this.props.questions)
         console.log(94, this.props.total)
@@ -91,7 +91,8 @@ class QuestionList extends Component {
                     dataSource={data}
                     pagination={{
                         onChange: this.onPagination,
-                        total: this.props.total
+                        total: this.props.total,
+                        current: page
                     }}
                 />
             </div>

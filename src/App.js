@@ -16,7 +16,8 @@ class App extends Component {
             subject: []
         },
         gradeId: null,
-        subjectId: null
+        subjectId: null,
+        page: 0
     }
 
     async componentDidMount () {
@@ -47,7 +48,7 @@ class App extends Component {
         gradeId && (param.gradeId = gradeId);
         subjectId && (param.subjectId = subjectId);
         pass && (param.pass = pass);
-        page && (param.offset = page * 10);
+        page && (param.offset = (page - 1) * 10);
         reason && (param.reason = reason);
 
         const questions = await api.get(api.pathResolve(`questions`), param);
@@ -113,6 +114,9 @@ class App extends Component {
     }
 
     onPagination = async (page) => {
+      this.setState({
+        page
+      })
       const res = await this.getQuestions({page});
     }
 
@@ -135,6 +139,7 @@ class App extends Component {
                       handleReason={this.handleReason}
                       total={this.state.total}
                       onPagination={this.onPagination}
+                      page={this.state.page}
                     />
                     <Display
                       question={this.state.question}
