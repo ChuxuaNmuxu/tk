@@ -10,38 +10,6 @@ class QuestionList extends Component {
         key: 'id'
         },
         {
-        title: '题型',
-        dataIndex: 'qtpye',
-        key: 'qtpye'
-        }, {
-        title: '知识点',
-        dataIndex: 'knowledges',
-        key: 'knowledges',
-        }, {
-        title: '选项a',
-        dataIndex: 'option_a',
-        key: 'option_a',
-        }, {
-            title: '选项a',
-            dataIndex: 'option_a',
-            key: 'option_a',
-        }, {
-            title: '选项b',
-            dataIndex: 'option_b',
-            key: 'option_b',
-        }, {
-        title: '选项c',
-        dataIndex: 'option_c',
-        key: 'option_c',
-        },{
-        title: '选项d',
-        dataIndex: 'option_d',
-        key: 'option_d',
-        },  {
-            title: '选项e',
-            dataIndex: 'option_e',
-            key: 'option_e',
-        }, {
         title: '通过',
         key: 'pass',
         render: (text, record) => {

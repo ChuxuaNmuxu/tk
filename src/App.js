@@ -36,17 +36,19 @@ class App extends Component {
         })
     }
 
-    getQuestions = async ({gradeId, subjectId, pass, page}) => {
+    getQuestions = async ({gradeId, subjectId, pass, page, reason}) => {
         gradeId = gradeId || this.state.gradeId;
         subjectId = subjectId || this.state.subjectId;
         pass = pass || this.state.pass;
         page = page || this.state.page;
+        reason = reason || this.state.reason;
 
         const param = {};
         gradeId && (param.gradeId = gradeId);
         subjectId && (param.subjectId = subjectId);
         pass && (param.pass = pass);
         page && (param.offset = page);
+        reason && (param.reason = reason);
 
         const questions = await api.get(api.pathResolve(`questions`), param);
         this.setState({
@@ -64,7 +66,7 @@ class App extends Component {
       const question = questions.filter(q => q.id === id);
 
       this.setState({
-          question
+          question: question ? question[0] : {}
       })
     }
 
@@ -84,7 +86,7 @@ class App extends Component {
     }
 
     handleSelectPass = async (pass) => {
-      await this.getQuestions({pass});
+      pass === '3' ? await this.getQuestions({pass: '0', reason: '0'}) : await this.getQuestions({pass});
     }
     
     handlePassQuestion = async (id, pass) => {

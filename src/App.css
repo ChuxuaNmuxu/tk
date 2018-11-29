@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+.App {
+  padding-bottom: 50px;
+}
+
 .filters-container {
   justify-content: center;
   align-items: center;
@@ -23,8 +27,15 @@
 }
 
 .display-wrap {
-  flex: 1;
+  flex: 3;
   padding-left: 25px;
+}
+
+.display-empty {
+  font-size: 40px;
+  height: 500px;
+  line-height: 500px;
+  text-align: center;
 }
 
 .dispaly-title {

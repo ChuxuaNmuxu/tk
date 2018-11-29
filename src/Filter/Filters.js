@@ -41,7 +41,8 @@ console.log(16, data)
                         Option => (
                              [
                                 <Option value={'0'} key={3938}>未通过</Option>,
-                                <Option value={'1'} key={5847}>已通过</Option>
+                                <Option value={'1'} key={5847}>已通过</Option>,
+                                <Option value={'3'} key={5847}>未标记</Option>,
                             ]
                         )
                     }

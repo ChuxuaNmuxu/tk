@@ -1,45 +1,47 @@
 import React, { Component } from 'react';
+import {map, pick, isEmpty} from 'lodash'
 
 class Display extends Component {
+    parse = {
+        qtpye: '题型',
+        knowledges: '知识点',
+        title: '标题',
+        option_a: '选项a',
+        option_b: '选项b',
+        option_c: '选项c',
+        option_d: '选项d',
+        option_e: '选项e',
+        answer1: '答案1',
+        answer2: '答案2',
+        parse1: '解析',
+    }
+
     render() {
-        const {question} = this.props;
+        const {question = {}} = this.props;
         console.log(7, question)
-        const {
-            title,
-            answer1,
-            answer2,
-            parse,
-        } = question[0] || {};
+
+        const data = pick(question, Object.keys(this.parse))
+
+        if (isEmpty(data)) return <div className='display-wrap display-empty'>点击左侧习题栏</div>
+
         return (
             <div className='display-wrap'>
                 <div className="quesborder">
-                    <div className='dispaly-title'>题干: </div>
-                    <div className='display-content'>
-                        <div className='.JYE_MATH_SELECTOR'>
-                            <div dangerouslySetInnerHTML={{__html: title}} />
-                        </div>
-                    </div>
-                    <div className='dispaly-title'>答案一: </div>
-                    <div className='display-content'>
-                        <div className="JYE_MATH_SELECTOR">
-                            <div dangerouslySetInnerHTML={{__html: answer1}} />
-
-                        </div>
-                    </div>
-                    <div className='dispaly-title'>答案二: </div>
-                    <div className='display-content'>
-                        <div className="JYE_MATH_SELECTOR">
-                            <div dangerouslySetInnerHTML={{__html: answer2}} />
-
-                        </div>
-                    </div>
-                    <div className='dispaly-title'>解析: </div>
-                    <div className='display-content'>
-                        <div className="JYE_MATH_SELECTOR">
-                            <div dangerouslySetInnerHTML={{__html: parse}} />
-
-                        </div>
-                    </div>
+                    {
+                        map(data, (v, k) => {
+                            console.log(37, k)
+                            return (
+                                <div className = 'display-item' key={k}>
+                                    <div className='dispaly-title'>{this.parse[k]}: </div>
+                                    <div className='display-content'>
+                                        <div className='.JYE_MATH_SELECTOR'>
+                                            <div dangerouslySetInnerHTML={{__html: v}} />
+                                        </div>
+                                    </div>  
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
         );
