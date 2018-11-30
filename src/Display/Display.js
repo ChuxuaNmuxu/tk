@@ -3,9 +3,9 @@ import {map, pick, isEmpty} from 'lodash'
 
 class Display extends Component {
     parse = {
-        qtpye: '题干',
+        qtpye: '题型',
         knowledges: '知识点',
-        title: '标题',
+        title: '标干',
         option_a: '选项a',
         option_b: '选项b',
         option_c: '选项c',
